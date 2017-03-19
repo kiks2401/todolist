@@ -1,3 +1,7 @@
+
+# Created by https://www.gitignore.io/api/windows,symfony
+
+### Symfony ###
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -25,14 +29,10 @@
 /bin/*
 !bin/console
 !bin/symfony_requirements
-/vendor/
 
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
-
-# Assets managed by Bower
-/web/assets/vendor/
 
 # PHPUnit
 /app/phpunit.xml
@@ -41,47 +41,18 @@
 # Build data
 /build/
 
-# Composer PHAR
-/composer.phar
-
 # Backup entities generated with doctrine:generate:entities command
-*/Entity/*~
+**/Entity/*~
 
-# =========================
-# Operating System Files
-# =========================
+### Symfony Patch ###
+/web/css/
+/web/js/
 
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-# =========================
-
-# Windows image file caches
+### Windows ###
+# Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db
+ehthumbs_vista.db
 
 # Folder config file
 Desktop.ini
@@ -97,3 +68,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# End of https://www.gitignore.io/api/windows,symfony
+
