@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -9,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class todoController extends Controller
 {
     /**
-     * @Route("/todo", name="todo_list")
+     * @Route("/", name="todo_list")
      */
     public function listAction(){
 
