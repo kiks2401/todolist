@@ -2,6 +2,25 @@
 
 {% block body %}
 
-  TODO DETAILS
+  <a class="btn btn-default" href="/">Back To Todos</a>
+  <hr>
+  <h2 class="page-header">{{todo.name}}</h2>
+
+
+  <ul class="list-group">
+    <li class="list-group-item">Category: {{todo.category}}</li>
+    <li class="list-group-item">Priority: {{todo.priority}}</li>
+    <li class="list-group-item">Due: <strong>{{todo.dueDate|date('F j, Y, g:i a')}}</strong></li>
+
+    <li class="list-group-item">
+    <h4>Description:</h4>
+     <p>
+  	   {{todo.description}}
+     </p>
+    </li>
+
+  </ul>
+
+  
 
 {% endblock body %}
