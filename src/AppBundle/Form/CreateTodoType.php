@@ -28,7 +28,7 @@ class CreateTodoType extends AbstractType{
 
                        ->add('due_date', DateTimeType::class, array('attr' => array('class' =>  'formcontrol', 'style' => 'margin-bottom:15px')))
 
-                       ->add('save', SubmitType::class, array('label' => 'Create Todo', 'attr' => array('class' =>  'btn btn-primary', 'style' => 'margin-bottom:15px'))) 
+                       //->add('save', SubmitType::class, array('label' => 'Create Todo', 'attr' => array('class' =>  'btn btn-primary', 'style' => 'margin-bottom:15px'))) 
 
                        -> getForm();
                              

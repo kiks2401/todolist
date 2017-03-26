@@ -15,7 +15,7 @@ class Todo
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -56,12 +56,7 @@ class Todo
      */
     private $dueDate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="create_date", type="datetime")
-     */
-    private $createDate;
+
 
 
     /**
@@ -194,28 +189,6 @@ class Todo
         return $this->dueDate;
     }
 
-    /**
-     * Set createDate
-     *
-     * @param \DateTime $createDate
-     *
-     * @return Todo
-     */
-    public function setCreateDate($createDate)
-    {
-        $this->createDate = $createDate;
-
-        return $this;
-    }
-
-    /**
-     * Get createDate
-     *
-     * @return \DateTime
-     */
-    public function getCreateDate()
-    {
-        return $this->createDate;
-    }
+   
 }
 
