@@ -15,8 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use AppBundle\Form\CreateTodoType;
 
-class todoController extends Controller
-{
+class todoController extends Controller{
     /**
      * @Route("/", name="todo_list")
      */
@@ -36,24 +35,69 @@ class todoController extends Controller
      */
     public function createAction(Request $request){
 
+    }
+        
+
+
+         
+
     /**
      * @Route("/todo/edit/{id}", name="todo_edit")
      */
     public function editAction($id, Request $request){
 
-            $form = $this->createForm(CreateTodoType::class, $postfixInstance);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $postfixInstance->createFolderStructure();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($postfixInstance);
-            $em->flush();
-            return $this->redirect($this->generateUrl('postfix_homepage'));
-        }
-        return $this->render('todo/edit.html.twig', array('form' => $form->createView()));
+          $todo = new Todo;
+          $form = $this->createFormBuilder($todo)
+
+                       ->add('name', TextType::class, array('attr' => array('class' =>  'form-control', 'style' => 'margin-bottom:15px')))
+
+                       ->add('category', TextType::class, array('attr' => array('class' =>  'form-control', 'style' => 'margin-bottom:15px')))
+
+                       ->add('description', TextareaType::class, array('attr' => array('class' =>  'form-control', 'style' => 'margin-bottom:15px')))
+
+                       ->add('priority', ChoiceType::class, array('choices' => array('Low' => 'Low', 'Normal' => 'Normal', 'High' => 'High'), 'attr' => array('class' =>  'form-control', 'style' => 'margin-bottom:15px')))
+
+                       ->add('due_date', DateTimeType::class, array('attr' => array('class' =>  'formcontrol', 'style' => 'margin-bottom:15px')))
+
+                       ->add('save', SubmitType::class, array('label' => 'Create Todo', 'attr' => array('class' =>  'btn btn-primary', 'style' => 'margin-bottom:15px')))
+
+
+                       -> getForm();
+
+                         
+                $form -> handleRequest($request);
+
+                if ($form -> isSubmitted() && $form -> isValid()) {
+                    //Get Data
+                    $name = $form['name']->getData();
+                    $category = $form['category']->getData();
+                    $description = $form['description']->getData();
+                    $priority = $form['priority']->getData();
+                    $due_date = $form['due_date']->getData();
+
+                    $now = new\DateTime('now');
+
+                    $todo -> setName($name);
+                    $todo -> setCategory($category);
+                    $todo -> setDescription($description);
+                    $todo -> setPriority($priority);
+                    $todo -> setDueDate($due_date);
+                    $todo -> setCreateDate($now);
+
+                    $em = $this->getDoctrine()->getManager();
+
+                    $em->persist($todo);
+                    $em->flush();
+
+                    $this -> addFlash('notice', 'Todo Added');
+
+                    return $this->redirectToRoute('todo_list');
+                }
+
+        return $this->render('todo/create.html.twig', array('form' => $form -> createView()));
 
       }
-    }
+   
 
    
 
@@ -94,4 +138,4 @@ class todoController extends Controller
     }
 
 
-}
+  }
