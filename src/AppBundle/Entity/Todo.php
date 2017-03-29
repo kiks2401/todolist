@@ -24,35 +24,35 @@ class Todo
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="category", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $category;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="priority", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $priority;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="due_date", type="datetime")
+     * @ORM\Column(type="datetime")
      */
     private $dueDate;
 

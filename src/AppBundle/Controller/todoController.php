@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use AppBundle\Form\CreateTodoType;
+use AppBundle\Form\EditTodoType;
 
 
 
@@ -29,10 +30,8 @@ class todoController extends Controller{
         return $this->render('todo/index.html.twig', array('todos' => $todos));
     }
 
-
-
-
     /**
+
      * @Route("/todo/create", name="todo_create")
      */
     public function createAction(Request $request){
@@ -40,29 +39,27 @@ class todoController extends Controller{
         $todo = new Todo;
         $todo->setDueDate(new\DateTime('now'));
         $form = $this->createForm(CreateTodoType::class, $todo);
-      
-        
-          $form -> handleRequest($request);
 
-                if ($form -> isSubmitted() && $form -> isValid()) {
-                    
-                    $em = $this->getDoctrine()->getManager();
 
-                    $em->persist($todo);
-                    $em->flush();
+        $form -> handleRequest($request);
 
-                    $this -> addFlash('notice', 'Todo Added');
+        if ($form -> isSubmitted() && $form -> isValid()) {
 
-                    return $this->redirectToRoute('todo_list');
-                }
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($todo);
+            $em->flush();
+
+            $this -> addFlash('notice', 'Todo Added');
+
+            return $this->redirectToRoute('todo_list');
+        }
 
         return $this->render('todo/create.html.twig', array('form' => $form->createView() ));
 
     }
-        
 
 
-         
 
     /**
      * @Route("/todo/edit/{todo}", name="todo_edit", requirements={"todo": "\d+"})
@@ -72,28 +69,28 @@ class todoController extends Controller{
                       //$todo = $this->getDoctrine()
                           //->getRepository('AppBundle:Todo')
                           //->find($id);
+        
+        
+        $form = $this->createForm(EditTodoType::class, $todo);
 
-                  $form = $this->createForm(CreateTodoType::class, $todo);
-                 $form -> handleRequest($request);
 
-                if ($form -> isSubmitted() && $form -> isValid()) {
-     
-                    $em = $this->getDoctrine()->getManager();
+        $form -> handleRequest($request);
 
-                   $em->persist($todo);
-                   $em->flush();
-                   $this -> addFlash('notice', 'Todo Updated');
+        if ($form -> isSubmitted() && $form -> isValid()) {
 
-                    return $this->redirectToRoute('todo_list');
+            $em = $this->getDoctrine()->getManager();
 
-              }
+            $em->persist($todo);
+            $em->flush();
+
+            $this -> addFlash('notice', 'Todo Added');
+
+            return $this->redirectToRoute('todo_list');
+            }
+             
         return $this->render('todo/edit.html.twig', array('form' => $form->createView(),'todo' => $todo));
 
       }
-   
-
-   
-
 
 
 
@@ -108,8 +105,6 @@ class todoController extends Controller{
 
         return $this->render('todo/details.html.twig', array('todo' => $todo));
     }
-
-
 
 
 
