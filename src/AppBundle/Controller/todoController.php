@@ -17,10 +17,13 @@ use AppBundle\Form\TodoType;
 
 
 
-
+/**
+ * @Route("/admin", name="todo_homepage")
+ */
 class todoController extends Controller{
+
     /**
-     * @Route("/", name="todo_list")
+     * @Route("/todo", name="todo_list")
      */
     public function listAction(){
             $todos = $this->getDoctrine()
