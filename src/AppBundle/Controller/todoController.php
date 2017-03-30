@@ -71,7 +71,7 @@ class todoController extends Controller{
                           //->find($id);
         
         
-        $form = $this->createForm(EditTodoType::class, $todo);
+        $form = $this->createForm(CreateTodoType::class, $todo);
 
 
         $form -> handleRequest($request);
