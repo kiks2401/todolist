@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 
-class CreateTodoType extends AbstractType{
+class TodoType extends AbstractType{
 
     public function buildForm(FormBuilderInterface $form, array $options){
 
@@ -28,7 +28,9 @@ class CreateTodoType extends AbstractType{
 
                        ->add('due_date', DateTimeType::class, array('attr' => array('class' =>  'formcontrol', 'style' => 'margin-bottom:15px')))
 
-                       //->add('save', SubmitType::class, array('label' => 'Create Todo', 'attr' => array('class' =>  'btn btn-primary', 'style' => 'margin-bottom:15px'))) 
+//                       ->add('save', SubmitType::class, array('label' => 'Create
+//                       Todo', 'attr' => array('class' =>  'btn btn-primary', 'style'
+//                       => 'margin-bottom:15px')))
 
                        -> getForm();
                              
