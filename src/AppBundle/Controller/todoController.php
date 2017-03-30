@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-use AppBundle\Form\CreateTodoType;
+use AppBundle\Form\TodoType;
 use AppBundle\Form\EditTodoType;
 
 
@@ -38,7 +38,7 @@ class todoController extends Controller{
 
         $todo = new Todo;
         $todo->setDueDate(new\DateTime('now'));
-        $form = $this->createForm(CreateTodoType::class, $todo);
+        $form = $this->createForm(TodoType::class, $todo);
 
 
         $form -> handleRequest($request);
@@ -71,7 +71,7 @@ class todoController extends Controller{
                           //->find($id);
         
         
-        $form = $this->createForm(CreateTodoType::class, $todo);
+        $form = $this->createForm(TodoType::class, $todo);
 
 
         $form -> handleRequest($request);
