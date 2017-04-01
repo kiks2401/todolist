@@ -34,7 +34,6 @@ class todoController extends Controller{
     }
 
     /**
-
      * @Route("/todo/create", name="todo_create")
      */
     public function createAction(Request $request){
@@ -86,7 +85,7 @@ class todoController extends Controller{
             $em->persist($todo);
             $em->flush();
 
-            $this -> addFlash('notice', 'Todo Added');
+            $this -> addFlash('notice', 'Todo Edited');
 
             return $this->redirectToRoute('todo_list');
             }
