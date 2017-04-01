@@ -97,13 +97,13 @@ class todoController extends Controller{
 
 
     /**
-     * @Route("/todo/details/{id}", name="todo_details")
+     * @Route("/todo/details/{todo}", name="todo_details")
      */
-    public function detailsAction($id){
+    public function detailsAction($todo){
 
              $todo = $this->getDoctrine()
                           ->getRepository('AppBundle:Todo')
-                          ->find($id);
+                          ->find($todo);
 
         return $this->render('todo/details.html.twig', array('todo' => $todo));
     }
@@ -112,7 +112,7 @@ class todoController extends Controller{
 
 
  /**
-     * @Route("/todo/delete/{id}", name="todo_delete")
+     * @Route("/todo/delete/{todo}", name="todo_delete")
      */
     public function deleteAction($id){
 
